@@ -6,6 +6,7 @@
 
 - Python 3.12+
 - Selenium　headlessモード
+- venv
 - Google Chrome およびその対応するChromeDriver
 
 ## セットアップ
@@ -58,6 +59,26 @@ python main.py over
 
 **例:**
 使用量が目標値を超えています。 0.5 GB 超過しています。
+定期実行の設定（crontab）
+以下の手順でcrontabに定期実行の設定を追加できます。
+
+crontabの編集を開始します。
+
+bashCopycrontab -e
+
+以下のような設定を追加します。
+
+bashCopy# 毎日午前9時に通常モードで実行
+0 9 * * * cd /path/to/your/script && /usr/bin/python3 main.py normal
+
+# 毎日午後6時に超過チェックモードで実行
+0 18 * * * cd /path/to/your/script && /usr/bin/python3 main.py over
+注意:
+
+/path/to/your/script は実際のスクリプトのディレクトリパスに置き換えてください。
+/usr/bin/python3 は実際のPythonインタプリタのパスに置き換えてください。
+cronの実行環境によってはPythonの依存パッケージのパスが通っていない場合があります。その場合は、仮想環境のPythonを指定するか、フルパスで指定してください。
+
 
 ## 注意事項
 
